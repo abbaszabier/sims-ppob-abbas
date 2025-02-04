@@ -1,31 +1,37 @@
 import { TypewriterEffectSmooth } from "../components/ui/typewritter-effect";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Home() {
   const navigate = useNavigate();
   const words = [
     {
-      text: "Build",
+      text: "Layanan",
     },
     {
-      text: "awesome",
+      text: "Terpercaya",
     },
     {
-      text: "apps",
+      text: "Untuk",
     },
     {
-      text: "with",
+      text: "Semua",
     },
     {
-      text: "Aceternity.",
-      className: "text-blue-500 dark:text-blue-500",
+      text: "Kebutuhan",
+      className: "text-[#F13B2F]",
+    },
+    {
+      text: "Anda.",
+      className: "text-[#F13B2F]",
     },
   ];
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <p className="text-neutral-600 dark:text-neutral-200 text-xs sm:text-base">
-        The road to freedom starts from here
+      <img src={logo} alt="Logo" className="w-10 h-10" />
+      <p className="text-neutral-600 dark:text-neutral-200 text-base mt-2">
+        Selamat datang di SIMS PPOB
       </p>
       <TypewriterEffectSmooth words={words} />
       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">

@@ -11,8 +11,8 @@ export default function NavtopDashboard() {
         <div className="flex bg-white justify-center items-center gap-2">
           <img
             src={logo}
-            alt="Login Illustration"
-            className="w-[20px] h-[20px] object-cover"
+            alt="Logo"
+            className="w-[24px] h-[24px] object-cover"
           />
           <h2 className="text-lg font-semibold text-black">SIMS PPOB</h2>
         </div>
