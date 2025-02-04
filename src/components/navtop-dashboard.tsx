@@ -2,20 +2,25 @@ import { useState } from "react";
 import logo from "../assets/Logo.png";
 import { NavLink } from "react-router-dom";
 import { Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function NavtopDashboard() {
+  const navigate = useNavigate();
   const [isOpenHamburger, setIsOpenHamburger] = useState(false);
   return (
     <nav className="bg-white shadow-xs w-full border-b border-gray-100 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <div className="flex bg-white justify-center items-center gap-2">
+        <button
+          className="flex bg-white justify-center items-center gap-2 cursor-pointer"
+          onClick={() => navigate("/dashboard")}
+        >
           <img
             src={logo}
             alt="Logo"
             className="w-[24px] h-[24px] object-cover"
           />
           <h2 className="text-lg font-semibold text-black">SIMS PPOB</h2>
-        </div>
+        </button>
 
         <button
           onClick={() => setIsOpenHamburger(!isOpenHamburger)}

@@ -1,8 +1,8 @@
 import { RouterProviderProps, createBrowserRouter } from "react-router-dom";
-import Login from "../pages/Login";
-import Registrasi from "../pages/Registrasi";
+import Login from "../pages/auth/Login";
+import Registrasi from "../pages/auth/Registrasi";
 import AuthLayout from "../layouts/auth-layout";
-import Home from "../pages/Home";
+import Home from "../pages/home";
 import DashboardLayout from "../layouts/dashboard-layout";
 import Homepage from "../pages/dashboard/Homepage";
 import TopUp from "../pages/dashboard/TopUp";

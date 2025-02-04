@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/Profile-Photo.png";
-import { AtSign, Pencil } from "lucide-react";
+import { AtSign, Pencil, User } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface UserProfile {
   email: string;
@@ -50,8 +51,18 @@ export default function Akun() {
   };
 
   return (
-    <div className="w-full max-w-screen-xl mx-auto">
-      <div className="flex flex-col items-center space-y-4 mt-8">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="w-full max-w-screen-xl mx-auto"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="flex flex-col items-center space-y-4 mt-8"
+      >
         <label htmlFor="profileImage" className="cursor-pointer relative">
           <img
             src={formData.profileImage || DEFAULT_PROFILE_IMAGE}
@@ -74,9 +85,14 @@ export default function Akun() {
         <h3 className="text-2xl font-semibold text-black">
           {`${formData.firstName} ${formData.lastName}`}
         </h3>
-      </div>
+      </motion.div>
 
-      <form className="space-y-6 mt-8 text-black w-full px-4 md:w-1/2 mx-auto">
+      <motion.form
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="space-y-6 mt-8 text-black w-full px-4 md:w-1/2 mx-auto"
+      >
         <div className="relative mb-6">
           <label
             htmlFor="email"
@@ -108,7 +124,7 @@ export default function Akun() {
             Nama Depan
           </label>
           <div className="absolute bottom-3 start-0 flex items-center ps-3 pointer-events-none">
-            <AtSign size={20} color="#adb5bd" />
+            <User size={20} color="#adb5bd" />
           </div>
           <input
             type="text"
@@ -131,7 +147,7 @@ export default function Akun() {
             Nama Belakang
           </label>
           <div className="absolute bottom-3 start-0 flex items-center ps-3 pointer-events-none">
-            <AtSign size={20} color="#adb5bd" />
+            <User size={20} color="#adb5bd" />
           </div>
           <input
             type="text"
@@ -180,7 +196,7 @@ export default function Akun() {
             </button>
           </div>
         )}
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 }

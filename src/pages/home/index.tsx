@@ -1,6 +1,6 @@
-import { TypewriterEffectSmooth } from "../components/ui/typewritter-effect";
+import { TypewriterEffectSmooth } from "../../components/typewritter-effect";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../../assets/Logo.png";
 
 export default function Home() {
   const navigate = useNavigate();
