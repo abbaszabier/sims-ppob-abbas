@@ -4,6 +4,7 @@ import Registrasi from "../pages/Registrasi";
 import AuthLayout from "../layouts/auth-layout";
 import Home from "../pages/Home";
 import DashboardLayout from "../layouts/dashboard-layout";
+import Homepage from "../pages/dashboard/Homepage";
 
 const router: RouterProviderProps["router"] = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router: RouterProviderProps["router"] = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <div className="text-black">Dashboard</div>,
+        element: <Homepage />,
       },
       {
         path: "topup",
