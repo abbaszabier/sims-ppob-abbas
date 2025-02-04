@@ -1,19 +1,11 @@
-import { useState } from "react";
-import illustrasiLogin from "../assets/Illustrasi-Login.png";
-import logo from "../assets/Logo.png";
+import illustrasiLogin from "../../assets/Illustrasi-Login.png";
+import logo from "../../assets/Logo.png";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { AtSign, LockKeyhole } from "lucide-react";
+import FormLogin from "./components/form-login";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Email:", email, "Password:", password);
-  };
 
   return (
     <motion.div
@@ -39,40 +31,7 @@ export default function Login() {
         <h2 className="w-1/2 text-center text-3xl text-black font-semibold">
           Masuk atau buat akun untuk memulai
         </h2>
-        <form className="w-full max-w-sm" onSubmit={handleSubmit}>
-          <div className="relative mb-4">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <AtSign size={20} color="#adb5bd" />
-            </div>
-            <input
-              type="email"
-              placeholder="masukan email anda"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 ps-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-black placeholder-[#adb5bd]"
-            />
-          </div>
-          <div className="relative mb-4">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <LockKeyhole size={20} color="#adb5bd" />
-            </div>
-            <input
-              type="password"
-              placeholder="masukan password anda"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 ps-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 placeholder-[#adb5bd]"
-            />
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition cursor-pointer"
-          >
-            Masuk
-          </motion.button>
-        </form>
+        <FormLogin />
         <p className="text-gray-600">
           Belum punya akun? registrasi{" "}
           <button
