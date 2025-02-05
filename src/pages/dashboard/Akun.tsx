@@ -164,36 +164,44 @@ export default function Akun() {
 
         {isEditing ? (
           <div className="flex flex-col w-full space-x-4 space-y-4">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="button"
               onClick={handleSave}
-              className="bg-red-500 text-white px-4 py-2 w-full rounded"
+              className="bg-red-500 text-white px-4 py-2 w-full rounded cursor-pointer"
             >
               Simpan
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="button"
               onClick={() => setIsEditing(false)}
-              className="bg-gray-200 px-4 py-2 rounded"
+              className="bg-gray-200 px-4 py-2 rounded cursor-pointer"
             >
               Batalkan
-            </button>
+            </motion.button>
           </div>
         ) : (
-          <div className="flex flex-col w-full space-x-4 space-y-4">
-            <button
+          <div className="flex flex-col w-full space-x-4 space-y-4 ">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="button"
               onClick={() => setIsEditing(true)}
-              className="bg-[#F13B2F] text-white w-full py-2 rounded"
+              className="bg-[#F13B2F] text-white w-full py-2 rounded cursor-pointer"
             >
               Edit Profil
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleLogout}
-              className="w-full text-red-500 border border-red-500 py-2 w-1/2 rounded"
+              className="w-full text-red-500 border border-red-500 py-2 w-1/2 rounded cursor-pointer"
             >
               Logout
-            </button>
+            </motion.button>
           </div>
         )}
       </motion.form>

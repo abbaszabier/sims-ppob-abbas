@@ -37,18 +37,20 @@ export default function TopUp() {
             placeholder="Masukkan nominal Top Up"
             value={nominal || ""}
             onChange={(e) => setNominal(Number(e.target.value))}
-            className="w-full p-3 border rounded-md mb-4 focus:outline-none focus:border-red-500 border-neutral-400"
+            className="w-full p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-red-500 border-neutral-400"
           />
-          <button
+          <motion.button
+            whileHover={isDisabled ? {} : { scale: 1.05 }}
+            whileTap={isDisabled ? {} : { scale: 0.95 }}
             disabled={isDisabled}
-            className={`w-full py-3 rounded-md ${
+            className={`w-full py-3 rounded-md cursor-pointer ${
               isDisabled
                 ? "bg-neutral-400 text-white cursor-not-allowed"
                 : "bg-[#F13B2F] text-white hover:bg-red-600"
             }`}
           >
             Top Up
-          </button>
+          </motion.button>
         </div>
 
         <div className="grid grid-cols-3 gap-4">

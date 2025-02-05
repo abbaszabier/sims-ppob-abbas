@@ -9,16 +9,16 @@ export default function Home() {
       text: "Layanan",
     },
     {
+      text: "PPOB",
+    },
+    {
       text: "Terpercaya",
     },
     {
-      text: "Untuk",
+      text: "untuk",
     },
     {
-      text: "Semua",
-    },
-    {
-      text: "Kebutuhan",
+      text: "Transaksi",
       className: "text-[#F13B2F]",
     },
     {
