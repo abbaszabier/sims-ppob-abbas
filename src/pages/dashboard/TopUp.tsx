@@ -9,6 +9,7 @@ export default function TopUp() {
   const [nominal, setNominal] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
+  const [isFailed, setIsFailed] = useState(false);
   const handleNominalChange = (value: number) => {
     setNominal(value);
   };
@@ -20,9 +21,14 @@ export default function TopUp() {
     }
 
     if (nominal !== null) {
-      doTopup.mutate({ top_up_amount: nominal });
-      setIsOpen(false);
-      setIsPaid(true);
+      try {
+        doTopup.mutate({ top_up_amount: nominal });
+        setIsOpen(false);
+        setIsPaid(true);
+      } catch {
+        setIsOpen(false);
+        setIsFailed(true);
+      }
     }
   };
 
@@ -113,6 +119,19 @@ export default function TopUp() {
           text: "Kembali",
           onClick: () => {
             setIsPaid(false);
+            setNominal(null);
+          },
+        }}
+      />
+      <Modal
+        isOpen={isFailed}
+        title="Top Up Sebesar"
+        amount={nominal ?? 0}
+        statusMessage="Gagal"
+        secondaryButton={{
+          text: "Kembali",
+          onClick: () => {
+            setIsFailed(false);
             setNominal(null);
           },
         }}

@@ -55,7 +55,7 @@ export default function DetailService() {
         className="flex flex-col w-full items-center md:items-start justify-center space-y-2 text-left text-black"
       >
         <p className="text-lg text-left">Pembayaran</p>
-        <h2 className="text-3xl md:text-4xl font-bold">
+        <h2 className="text-xl md:text-2xl font-bold">
           {service?.service_code}
         </h2>
       </motion.div>
