@@ -1,30 +1,13 @@
-import { getIconService } from "../../lib/utils";
-import Banner1 from "../../assets/Banner-1.png";
-import Banner2 from "../../assets/Banner-2.png";
-import Banner3 from "../../assets/Banner-3.png";
-import Banner4 from "../../assets/Banner-4.png";
-import Banner5 from "../../assets/Banner-5.png";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
+import { useServices } from "../../api/servis";
+import { useBanner } from "../../api/banner";
+import { useNavigate } from "react-router-dom";
 
 export default function Homepage() {
-  const services = [
-    { name: "PBB" },
-    { name: "Listrik" },
-    { name: "Pulsa" },
-    { name: "PDAM" },
-    { name: "PGN" },
-    { name: "TV Langganan" },
-    { name: "Musik" },
-    { name: "Voucher Game" },
-    { name: "Voucher Makanan" },
-    { name: "Kurban" },
-    { name: "Zakat" },
-    { name: "Paket Data" },
-  ];
-
-  const images = [Banner1, Banner2, Banner3, Banner4, Banner5];
-
+  const { data } = useServices();
+  const { data: getBanner } = useBanner();
+  const navigate = useNavigate();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -38,11 +21,13 @@ export default function Homepage() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-3 w-full max-w-screen-xl py-2 md:py-6 text-black"
       >
-        {services.map((service, index) => (
+        {data?.data?.data.map((service, index) => (
           <motion.button
-            onClick={() => alert(service.name)}
-            key={service.name}
-            className="flex flex-col items-center space-y-1 text-center rounded-xl cursor-pointer p-0 md:p-2 hover:bg-gray-50 dark:hover:bg-[#051c29] transition-all duration-300"
+            onClick={() =>
+              navigate(`/dashboard/transaction/${service.service_code}`)
+            }
+            key={service.service_code}
+            className="flex flex-col items-center space-y-1 gap-2 text-center rounded-xl cursor-pointer p-0 md:p-2 hover:bg-gray-50 dark:hover:bg-[#051c29] transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
@@ -50,9 +35,9 @@ export default function Homepage() {
             whileTap={{ scale: 0.9 }}
           >
             <div className="text-2xl sm:text-3xl">
-              {getIconService(service.name)}
+              <img src={service.service_icon} alt={service.service_name} />
             </div>
-            <p className="text-xs sm:text-sm">{service.name}</p>
+            <p className="text-xs sm:text-sm">{service.service_name}</p>
           </motion.button>
         ))}
       </motion.div>
@@ -65,10 +50,10 @@ export default function Homepage() {
       >
         <Marquee gradient={false} speed={50} pauseOnHover={true}>
           <div className="flex gap-4">
-            {images.map((img, index) => (
+            {getBanner?.data?.data.map((img, index) => (
               <motion.img
                 key={index}
-                src={img}
+                src={img.banner_image}
                 className="w-full object-cover rounded-lg gap-4"
                 alt="Promo"
                 initial={{ opacity: 0, scale: 0.8 }}

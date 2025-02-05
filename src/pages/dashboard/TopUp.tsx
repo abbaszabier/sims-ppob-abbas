@@ -1,11 +1,29 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTopup } from "../../api/topup";
+import Modal from "../../components/modal";
+import { toast } from "react-toastify";
+import { Wallet } from "lucide-react";
 
 export default function TopUp() {
   const [nominal, setNominal] = useState<number | null>(null);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [isPaid, setIsPaid] = useState(false);
   const handleNominalChange = (value: number) => {
     setNominal(value);
+  };
+
+  const doTopup = useTopup();
+  const handleTopup = () => {
+    if (nominal !== null && nominal > 1000000) {
+      toast.error("Nominal Top Up maksimal 1.000.000");
+    }
+
+    if (nominal !== null) {
+      doTopup.mutate({ top_up_amount: nominal });
+      setIsOpen(false);
+      setIsPaid(true);
+    }
   };
 
   const isDisabled = nominal === null || nominal < 10000 || nominal > 1000000;
@@ -32,17 +50,24 @@ export default function TopUp() {
         className="grid grid-cols-1 md:grid-cols-2 gap-8 text-black w-full max-w-screen-xl mt-6"
       >
         <div className="col-span-1">
-          <input
-            type="number"
-            placeholder="Masukkan nominal Top Up"
-            value={nominal || ""}
-            onChange={(e) => setNominal(Number(e.target.value))}
-            className="w-full p-3 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-red-500 border-neutral-400"
-          />
+          <div className="relative">
+            <div className="absolute top-4 start-0 flex items-center ps-3 pointer-events-none">
+              <Wallet size={20} color="#555" />
+            </div>
+            <input
+              type="number"
+              placeholder="Masukkan nominal Top Up"
+              value={nominal || ""}
+              onChange={(e) => setNominal(Number(e.target.value))}
+              className="w-full p-3 ps-10 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-red-500 border-neutral-400"
+            />
+          </div>
+
           <motion.button
             whileHover={isDisabled ? {} : { scale: 1.05 }}
             whileTap={isDisabled ? {} : { scale: 0.95 }}
             disabled={isDisabled}
+            onClick={() => setIsOpen(true)}
             className={`w-full py-3 rounded-md cursor-pointer ${
               isDisabled
                 ? "bg-neutral-400 text-white cursor-not-allowed"
@@ -69,6 +94,29 @@ export default function TopUp() {
           ))}
         </div>
       </motion.div>
+      <Modal
+        isOpen={isOpen}
+        title="Anda yakin untuk Top Up sebesar"
+        amount={nominal ?? 0}
+        primaryButton={{
+          text: `${doTopup ? "Ya, Lanjutkan Top Up" : "Loading..."}`,
+          onClick: handleTopup,
+        }}
+        secondaryButton={{ text: "Batalkan", onClick: () => setIsOpen(false) }}
+      />
+      <Modal
+        isOpen={isPaid}
+        title="Top Up Sebesar"
+        amount={nominal ?? 0}
+        statusMessage="Berhasil"
+        secondaryButton={{
+          text: "Kembali",
+          onClick: () => {
+            setIsPaid(false);
+            setNominal(null);
+          },
+        }}
+      />
     </motion.div>
   );
 }

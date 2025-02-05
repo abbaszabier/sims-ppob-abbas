@@ -6,7 +6,7 @@ export const formLoginSchema = z.object({
     .email({ message: "Email gak valid" }),
   password: z
     .string({ required_error: "Password gak boleh kosong" })
-    .min(5, { message: "Password minimal 5 karakter" }),
+    .min(8, { message: "Password minimal 8 karakter" }),
 });
 
 export const formRegistrasiSchema = z

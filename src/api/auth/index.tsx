@@ -11,6 +11,11 @@ export interface RegistrasiData {
   password: string;
 }
 
+export interface LoginData {
+  email: string;
+  password: string;
+}
+
 export const useRegistrasi = () => {
   const navigate = useNavigate();
 
@@ -28,6 +33,42 @@ export const useRegistrasi = () => {
         theme: "light",
       });
       navigate("/login");
+    },
+
+    onError: (error: AxiosError) => {
+      const err = (error?.response?.data as { message: string })?.message;
+
+      toast.error(err, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    },
+  });
+};
+
+export const useLogin = () => {
+  const navigate = useNavigate();
+
+  return useMutation({
+    mutationFn: (data: LoginData) => useAxios.post("/login", data),
+    onSuccess: () => {
+      toast.success("Login berhasil!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      navigate("/dashboard");
     },
 
     onError: (error: AxiosError) => {

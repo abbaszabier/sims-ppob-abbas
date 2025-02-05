@@ -8,6 +8,8 @@ import Homepage from "../pages/dashboard/Homepage";
 import TopUp from "../pages/dashboard/TopUp";
 import Transaction from "../pages/dashboard/Transaction";
 import Akun from "../pages/dashboard/Akun";
+import ProtectedDashboard from "../components/protected-dashboard";
+import DetailService from "../pages/dashboard/DetailService";
 
 const router: RouterProviderProps["router"] = createBrowserRouter([
   {
@@ -30,23 +32,18 @@ const router: RouterProviderProps["router"] = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <ProtectedDashboard />,
     children: [
       {
         path: "",
-        element: <Homepage />,
-      },
-      {
-        path: "topup",
-        element: <TopUp />,
-      },
-      {
-        path: "transaction",
-        element: <Transaction />,
-      },
-      {
-        path: "akun",
-        element: <Akun />,
+        element: <DashboardLayout />,
+        children: [
+          { path: "", element: <Homepage /> },
+          { path: "topup", element: <TopUp /> },
+          { path: "transaction", element: <Transaction /> },
+          { path: "transaction/:service_code", element: <DetailService /> },
+          { path: "akun", element: <Akun /> },
+        ],
       },
     ],
   },
