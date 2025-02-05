@@ -22,6 +22,7 @@ export default function FormRegistrasi() {
     formState: { errors },
   } = useForm<FormRegistrasiData>({
     resolver: zodResolver(formRegistrasiSchema),
+    mode: "onChange",
   });
 
   const doRegistrasi = useRegistrasi();
