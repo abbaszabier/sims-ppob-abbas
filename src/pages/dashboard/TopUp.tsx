@@ -10,6 +10,7 @@ export default function TopUp() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPaid, setIsPaid] = useState(false);
   const [isFailed, setIsFailed] = useState(false);
+
   const handleNominalChange = (value: number) => {
     setNominal(value);
   };
@@ -33,6 +34,7 @@ export default function TopUp() {
   };
 
   const isDisabled = nominal === null || nominal < 10000 || nominal > 1000000;
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

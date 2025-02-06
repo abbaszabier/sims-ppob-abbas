@@ -13,9 +13,7 @@ import { useUpdateProfile } from "../../../api/profile";
 
 interface FormProfileProps {
   setUserProfile: React.Dispatch<React.SetStateAction<UserProfile>>;
-
   formData: UserProfile;
-
   setFormData: React.Dispatch<React.SetStateAction<UserProfile>>;
 }
 
