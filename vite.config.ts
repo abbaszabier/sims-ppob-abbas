@@ -45,7 +45,7 @@ export default defineConfig({
         short_name: "PPOB",
         description: "Aplikasi PPOB",
         theme_color: "#ffffff",
-        start_url: "/login",
+        start_url: "/",
         display: "standalone",
         icons: [
           {
