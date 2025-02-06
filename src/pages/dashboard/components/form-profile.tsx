@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserProfile } from "../Akun";
 import { useUpdateProfile } from "../../../api/profile";
+import { toast } from "react-toastify";
 
 interface FormProfileProps {
   setUserProfile: React.Dispatch<React.SetStateAction<UserProfile>>;
@@ -63,6 +64,16 @@ export default function FormProfile({
 
   const handleLogout = () => {
     store.dispatch(logout());
+    toast.success("Logout berhasil", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     navigate("/login");
   };
 
@@ -76,7 +87,7 @@ export default function FormProfile({
     >
       <div className="flex flex-col mb-4 space-y-1">
         <div className="relative">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          <label className="block mb-2 text-sm font-medium text-gray-900">
             Email
           </label>
           <div className="absolute bottom-3 start-0 flex items-center ps-3 pointer-events-none">
@@ -98,7 +109,7 @@ export default function FormProfile({
 
       <div className="flex flex-col mb-4 space-y-1">
         <div className="relative">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          <label className="block mb-2 text-sm font-medium text-gray-900">
             Nama Depan
           </label>
           <div className="absolute bottom-3 start-0 flex items-center ps-3 pointer-events-none">
@@ -126,7 +137,7 @@ export default function FormProfile({
         <div className="relative ">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900"
           >
             Nama Belakang
           </label>

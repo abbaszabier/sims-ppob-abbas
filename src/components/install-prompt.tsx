@@ -56,7 +56,7 @@ const InstallPrompt = () => {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white text-center p-4 md:rounded-2xl rounded-xl shadow-lg w-80 dark:bg-black dark:border dark:border-gray-700">
+      <div className="bg-white text-center p-4 md:rounded-2xl rounded-xl shadow-lg w-80">
         <img
           src="/logo192x192.png"
           alt="QuranKu"
@@ -74,7 +74,7 @@ const InstallPrompt = () => {
             aria-labelledby="install"
             onClick={handleInstallClick}
             disabled={!deferredPrompt}
-            className="w-full px-4 py-2 rounded-md border border-neutral-300 bg-neutral-100 text-neutral-600 dark:text-neutral-800 text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md cursor-pointer"
+            className="w-full px-4 py-2 rounded-md border border-neutral-300 bg-neutral-100 text-neutral-600 text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md cursor-pointer"
           >
             {deferredPrompt ? "Install" : "Installasi belum siap"}
           </button>
@@ -82,7 +82,7 @@ const InstallPrompt = () => {
             aria-label="tutup"
             aria-labelledby="tutup"
             onClick={() => setShowModal(false)}
-            className="w-full px-4 py-2 rounded-md border border-neutral-300 bg-[#F13B2F] text-background dark:text-white
+            className="w-full px-4 py-2 rounded-md border border-neutral-300 bg-[#F13B2F] text-background
           text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md cursor-pointer"
           >
             Nanti dulu

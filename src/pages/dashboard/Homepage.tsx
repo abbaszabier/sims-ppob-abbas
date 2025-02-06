@@ -27,7 +27,7 @@ export default function Homepage() {
               navigate(`/dashboard/transaction/${service.service_code}`)
             }
             key={service.service_code}
-            className="flex flex-col items-center space-y-1 gap-2 text-center rounded-xl cursor-pointer p-0 md:p-2 hover:bg-gray-50 dark:hover:bg-[#051c29] transition-all duration-300"
+            className="flex flex-col items-center space-y-1 gap-2 text-center rounded-xl cursor-pointer p-0 md:p-2 hover:bg-gray-50 transition-all duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}

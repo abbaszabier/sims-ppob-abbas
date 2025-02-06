@@ -18,7 +18,7 @@ export default function Login() {
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="flex flex-col bg-white justify-center items-center px-8 space-y-8"
+        className="flex flex-col bg-white h-screen justify-center items-center px-4 md:px-8 space-y-8"
       >
         <div className="flex bg-white justify-center items-center gap-2 px-8">
           <img
@@ -28,7 +28,7 @@ export default function Login() {
           />
           <h2 className="text-2xl font-semibold text-black">SIMS PPOB</h2>
         </div>
-        <h2 className="w-1/2 text-center text-3xl text-black font-semibold">
+        <h2 className="md:w-1/2 text-center text-2xl md:text-3xl text-black font-semibold">
           Masuk atau buat akun untuk memulai
         </h2>
         <FormLogin />
