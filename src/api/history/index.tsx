@@ -23,15 +23,16 @@ export interface History {
   data: Data;
 }
 
-export const useHistory = () => {
+export const useHistory = (offset: number, limit: number) => {
   const persistedState = localStorage.getItem("persist:auth")
     ? JSON.parse(localStorage.getItem("persist:auth") as string)
     : null;
 
   return useQuery<History>({
-    queryKey: ["history"],
+    queryKey: ["history", offset, limit],
     queryFn: () =>
       useAxios.get("/transaction/history", {
+        params: { offset, limit },
         headers: {
           Authorization: `Bearer ${persistedState.token}`,
         },

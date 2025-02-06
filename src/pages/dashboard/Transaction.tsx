@@ -4,13 +4,12 @@ import { useHistory } from "../../api/history";
 import { formatDate } from "../../lib/utils";
 
 export default function Transaction() {
-  const { data } = useHistory();
-  const [visibleTransactions, setVisibleTransactions] = useState<number>(
-    data?.data?.data?.limit ? data?.data?.data?.limit : 5
-  );
+  const [offset, setOffset] = useState(5);
+  const limit = 5;
+  const { data } = useHistory(limit, offset);
 
   const handleShowMore = () => {
-    setVisibleTransactions((prev) => prev + 5);
+    setOffset((prevOffset) => prevOffset + limit);
   };
 
   return (
@@ -49,7 +48,7 @@ export default function Transaction() {
           >
             {(data?.data?.data?.records?.length ?? 0) > 0 ? (
               data?.data?.data?.records
-                .slice(0, visibleTransactions)
+                .slice(0, offset + limit)
                 .map((transaction, index) => (
                   <motion.div
                     key={index}
@@ -89,14 +88,12 @@ export default function Transaction() {
               </p>
             )}
           </motion.div>
-          {visibleTransactions < (data?.data?.data?.records.length ?? 0) && (
-            <button
-              onClick={handleShowMore}
-              className="mt-6 text-red-500 hover:underline block mx-auto"
-            >
-              Show more
-            </button>
-          )}
+          <button
+            onClick={handleShowMore}
+            className="mt-6 text-red-500 hover:underline block mx-auto"
+          >
+            Show more
+          </button>
         </div>
       </div>
     </motion.div>
