@@ -1,11 +1,11 @@
-import Profile from "../assets/Profile-Photo.png";
-import BackgroundSaldo from "../assets/Background-Saldo.png";
+import Profile from "../../../assets/Profile-Photo.png";
+import BackgroundSaldo from "../../../assets/Background-Saldo.png";
 import { Eye, EyeClosed } from "lucide-react";
 import { motion } from "framer-motion";
-import { useProfile } from "../api/profile";
-import { useBalance } from "../api/balance";
+import { useProfile } from "../../../api/profile";
+import { useBalance } from "../../../api/balance";
 import { useState } from "react";
-import { formatCurrency } from "../lib/utils";
+import { formatCurrency } from "../../../lib/utils";
 
 export default function UserInfo() {
   const { data } = useProfile();

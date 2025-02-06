@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import NavtopDashboard from "../components/navtop-dashboard";
-import UserInfo from "../components/user-info";
+import UserInfo from "../pages/dashboard/components/user-info";
 import { useLocation } from "react-router-dom";
 
 export default function DashboardLayout() {
