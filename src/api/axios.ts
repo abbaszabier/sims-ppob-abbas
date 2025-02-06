@@ -4,7 +4,8 @@ import { logout } from "../features/auth/auth-slice";
 import { toast } from "react-toastify";
 
 const Axios = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  // baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "https://take-home-test-api.nutech-integrasi.com",
   headers: {
     "Content-Type": "application/json",
     Accept: "*/*",
